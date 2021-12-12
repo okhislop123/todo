@@ -6,12 +6,11 @@ import logger from 'morgan';
 import expressValidator from 'express-validator';
 
 import pkg from '../../package.json';
-import { connect } from './config/db';
+import { connectdb } from './config/db';
 import { rootRouter } from './router';
 
 const startServer = async () => {
   const app = express();
-
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line global-require
     const webpack = require('webpack');
@@ -84,7 +83,7 @@ const startServer = async () => {
   });
 
   // connect db
-  connect();
+  connectdb();
 
   app.listen(process.env.PORT || 3000, () => {
     console.info(`App is running at http://localhost:${process.env.PORT || 3000}`);

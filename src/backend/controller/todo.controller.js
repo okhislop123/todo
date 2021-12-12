@@ -32,7 +32,6 @@ const createTodo = async (req, res) => {
     });
   }
 };
-
 const updateTodo = async (req, res) => {
   try {
     const { id } = req.params;
