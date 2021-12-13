@@ -18,7 +18,11 @@ export default function Todo() {
     dispatch(fetchTodo);
   }, [dispatch]);
 
-  const todos = useSelector(state => state.todo.todos);
+  const todos = useSelector(state => {
+    if (state.todo) {
+      return state.todo.todos;
+    }
+  });
   const createTodo = async () => {
     try {
       const res = await axios({
